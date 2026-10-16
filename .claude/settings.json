@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Microsoft_365__outlook_calendar_search",
+      "mcp__Microsoft_365__outlook_find_available_time",
+      "mcp__Microsoft_365__outlook_create_event",
+      "mcp__Microsoft_365__outlook_update_event"
+    ]
+  }
+}
