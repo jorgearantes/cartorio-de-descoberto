@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Microsoft_365__outlook_calendar_search",
+      "mcp__Microsoft_365__outlook_find_available_time",
+      "mcp__Microsoft_365__find_meeting_availability",
+      "mcp__Microsoft_365__outlook_create_event",
+      "mcp__Microsoft_365__outlook_update_event",
+      "mcp__Microsoft_365__outlook_email_search",
+      "mcp__Microsoft_365__read_resource",
+      "mcp__Microsoft_365__search_people",
+      "mcp__Microsoft_365__get_granted_scopes"
+    ]
+  }
+}
