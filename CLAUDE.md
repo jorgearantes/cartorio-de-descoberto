@@ -21,9 +21,20 @@ Antes de marcar, confira se o horário está livre e avise sobre conflitos.
 - Toda reunião externa leva um compromisso `Locomoção` de **30 minutos
   imediatamente antes**, terminando no horário de início da reunião.
 - Mostrar como: Ocupado. Sem local nem descrição.
-- **Categoria: `Rotina`.** A ferramenta do conector não aplica categorias em
-  compromissos da agenda, então, ao terminar, lembre o tabelião de marcar a
-  categoria `Rotina` manualmente na Locomoção.
+- **Categoria: `Rotina`.** O conector Microsoft 365 do claude.ai cria o
+  compromisso mas não aplica categoria. Depois de criar, marque `Rotina` com a
+  tool `agenda_categorizar` do MCP do cartório (perfil tabelião): pegue o id com
+  `agenda_compromissos` (ou o id devolvido pela criação), simule, mostre e grave
+  com `confirmar=True`. Se o MCP do cartório não estiver conectado ou responder
+  403, lembre o tabelião de marcar a categoria `Rotina` manualmente.
+
+### Categorizar compromissos
+
+- Categoria em compromisso já existente: `agenda_categorizar` (põe e tira, sem
+  mexer em horário, assunto ou convidados). Os nomes válidos vêm de
+  `agenda_categorias`.
+- Sempre simule primeiro e mostre o antes → depois. Id de série recorrente muda
+  a série inteira.
 
 ### Outras categorias usadas na agenda
 
