@@ -22,19 +22,21 @@ Antes de marcar, confira se o horário está livre e avise sobre conflitos.
   imediatamente antes**, terminando no horário de início da reunião.
 - Mostrar como: Ocupado. Sem local nem descrição.
 - **Categoria: `Rotina`.** O conector Microsoft 365 do claude.ai cria o
-  compromisso mas não aplica categoria. Depois de criar, marque `Rotina` com a
-  tool `agenda_categorizar` do MCP do cartório (perfil tabelião): pegue o id com
-  `agenda_compromissos` (ou o id devolvido pela criação), simule, mostre e grave
-  com `confirmar=True`. Se o MCP do cartório não estiver conectado ou responder
-  403, lembre o tabelião de marcar a categoria `Rotina` manualmente.
+  compromisso mas não aplica categoria. Quando o MCP do cartório (perfil
+  tabelião) estiver conectado, crie a reunião com `agenda_criar` (com `local`
+  ela já cria a Locomoção de 30 min antes) e confira em `agenda_listar` se a
+  Locomoção ficou com `Rotina`; se não, corrija com `agenda_alterar`
+  (`categorias_csv="Rotina"`). Sem o MCP do cartório, crie pelo conector do
+  claude.ai e lembre o tabelião de marcar a categoria `Rotina` manualmente.
 
-### Categorizar compromissos
+### Categorizar compromissos (MCP do cartório)
 
-- Categoria em compromisso já existente: `agenda_categorizar` (põe e tira, sem
-  mexer em horário, assunto ou convidados). Os nomes válidos vêm de
+- Um compromisso: `agenda_alterar` com `categorias_csv`. Vários de uma vez:
+  `agenda_categorizar` com `itens_json` (`[{"id": "...", "categorias":
+  ["Rotina"]}]`). Os ids vêm de `agenda_listar`; os nomes exatos, de
   `agenda_categorias`.
-- Sempre simule primeiro e mostre o antes → depois. Id de série recorrente muda
-  a série inteira.
+- Sempre chame primeiro sem `confirmar`, mostre o resultado e só grave com
+  `confirmar=True` depois do sim.
 
 ### Outras categorias usadas na agenda
 
