@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "cartorio-tabeliao": {
+      "type": "http",
+      "url": "https://mcp-tabeliao.jorgearantes.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${CARTORIO_MCP_TOKEN}"
+      }
+    }
+  }
+}
