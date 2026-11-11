@@ -908,21 +908,23 @@ def choreograph(S, cam):
     key_rotz(ent, sec(0.0), 0)
     key_rotz(ent, sec(1.0), 0)
     key_rotz(ent, sec(2.6), 92)
+    key_rotz(ent, sec(5.4), 92)
+    key_rotz(ent, sec(7.0), 0)
     # --- armário: portas centrais (abrem do meio para os lados)
     key_rotz(dA, sec(18.0), 0); key_rotz(dB, sec(18.0), 0)
     key_rotz(dA, sec(20.2), 92); key_rotz(dB, sec(20.2), -95)
     key_rotz(dA, sec(24.6), 92); key_rotz(dB, sec(24.6), -95)
     key_rotz(dA, sec(26.4), 0); key_rotz(dB, sec(26.4), 0)
     for lt in (lA, lB):
-        key_energy(lt, sec(18.0), 0); key_energy(lt, sec(18.8), 25)
-        key_energy(lt, sec(25.6), 25); key_energy(lt, sec(26.4), 0)
+        key_energy(lt, sec(18.0), 0); key_energy(lt, sec(18.8), 45)
+        key_energy(lt, sec(25.6), 45); key_energy(lt, sec(26.4), 0)
     # --- perna do L: dobradiça à direita, abre da esquerda p/ a direita
     key_rotz(dL, sec(28.2), 0)
     key_rotz(dL, sec(30.2), 100)
     key_rotz(dL, sec(33.2), 100)
     key_rotz(dL, sec(35.0), 0)
-    key_energy(lL, sec(28.2), 0); key_energy(lL, sec(29.0), 25)
-    key_energy(lL, sec(34.2), 25); key_energy(lL, sec(35.0), 0)
+    key_energy(lL, sec(28.2), 0); key_energy(lL, sec(29.0), 60)
+    key_energy(lL, sec(34.2), 60); key_energy(lL, sec(35.0), 0)
     # --- gaveteiro central: 4 gavetas em sequência
     ped = S['drawers'][1]
     for i, d in enumerate(ped):
@@ -936,6 +938,8 @@ def choreograph(S, cam):
     c2 = S['chair2']
     key_loc(c2, sec(42.4), tuple(c2.location)); key_rotz(c2, sec(42.4), -8)
     key_loc(c2, sec(44.0), (2.12, 1.38, 0)); key_rotz(c2, sec(44.0), 25)
+    key_loc(c2, sec(47.8), (2.12, 1.38, 0)); key_rotz(c2, sec(47.8), 25)
+    key_loc(c2, sec(49.4), (1.775, 1.05, 0)); key_rotz(c2, sec(49.4), -8)
     tr = S['trays'][1]
     key_loc(tr, sec(44.4), tuple(tr.location))
     key_loc(tr, sec(45.4), (tr.location.x, tr.location.y + 0.26, tr.location.z))
@@ -962,26 +966,26 @@ def choreograph(S, cam):
     steps = 16
     for k in range(steps + 1):
         a = 2 * math.pi * k / steps
-        keys.append((sec(t0 + dur * k / steps), tuple(c), (c.x + 2 * math.cos(a), c.y + 2 * math.sin(a), 1.3)))
+        keys.append((sec(t0 + dur * k / steps), tuple(c), (c.x + 2 * math.cos(a), c.y + 2 * math.sin(a), E - 0.08)))
     keys += [
         # armário principal
-        (sec(17.6), (1.75, 1.15, 1.55), (3.3, 1.15, 1.3)),
-        (sec(20.4), (1.8, 1.15, 1.55), (3.3, 1.15, 1.3)),
-        (sec(24.0), (2.2, 1.2, 1.5), (3.5, 1.15, 1.2)),
-        (sec(26.4), (2.0, 1.4, 1.55), (3.0, 0.5, 1.3)),
-        # perna do L
-        (sec(28.0), (2.05, 1.95, 1.5), (2.8, 0.3, 1.2)),
-        (sec(32.0), (2.25, 1.75, 1.45), (2.85, 0.2, 1.1)),
-        (sec(35.2), (1.9, 1.9, 1.4), (1.6, 0.3, 0.7)),
+        (sec(17.6), (1.35, 1.2, 1.5), (3.3, 1.15, 1.3)),
+        (sec(20.4), (1.4, 1.2, 1.5), (3.3, 1.15, 1.3)),
+        (sec(24.0), (1.75, 1.2, 1.5), (3.5, 1.15, 1.25)),
+        (sec(26.4), (2.3, 1.75, 1.55), (2.75, 0.3, 1.25)),
+        # perna do L (câmera do lado do canto, porta abre para a direita)
+        (sec(28.0), (2.8, 1.75, 1.5), (2.7, 0.2, 1.1)),
+        (sec(32.0), (2.78, 1.45, 1.45), (2.7, 0.1, 1.0)),
+        (sec(35.2), (1.6, 1.6, 1.35), (1.3, 0.3, 0.6)),
         # gaveteiro central
-        (sec(37.0), (1.28, 1.95, 1.3), (1.26, 0.45, 0.42)),
-        (sec(41.6), (1.28, 1.85, 1.25), (1.26, 0.45, 0.4)),
+        (sec(37.0), (1.26, 1.2, 1.45), (1.26, 0.55, 0.3)),
+        (sec(41.6), (1.26, 1.15, 1.42), (1.26, 0.55, 0.3)),
         # suporte de teclado
         (sec(44.0), (1.55, 1.85, 1.3), (1.78, 0.35, 0.62)),
         (sec(47.6), (1.6, 1.85, 1.3), (1.78, 0.35, 0.62)),
         # aparador
-        (sec(49.6), (1.8, 0.95, 1.45), (1.8, 2.8, 0.55)),
-        (sec(54.8), (1.8, 1.25, 1.35), (1.8, 2.8, 0.5)),
+        (sec(49.6), (1.8, 1.45, 1.45), (1.8, 2.8, 0.55)),
+        (sec(54.8), (1.8, 1.55, 1.35), (1.8, 2.8, 0.5)),
         # plano final
         (sec(58.0), (0.35, 1.75, 1.62), (3.6, 0.9, 1.2)),
         (sec(61.0), (0.3, 1.8, 1.62), (3.6, 0.9, 1.2)),
@@ -996,9 +1000,9 @@ STILLS = {
     '02_bancada': ((1.35, 2.75, 1.45), (1.25, 0.0, 1.0), 18, {}),
     '03_aparador': ((1.8, 0.25, 1.35), (1.8, 2.9, 1.1), 18, {}),
     '04_porta_entrada': ((2.9, 1.85, 1.55), (0.0, 1.35, 1.2), 18, {}),
-    '05_armario_aberto': ((1.6, 1.2, 1.55), (3.3, 1.1, 1.25), 18, {'dA': 92, 'dB': -95, 'wl': [0, 1]}),
-    '06_armario_L_aberto': ((2.05, 1.95, 1.5), (2.8, 0.3, 1.15), 18, {'dL': 100, 'wl': [2]}),
-    '07_gavetas': ((1.3, 1.9, 1.3), (1.26, 0.45, 0.42), 20, {'drawers': True}),
+    '05_armario_aberto': ((1.35, 1.2, 1.5), (3.3, 1.1, 1.25), 18, {'dA': 92, 'dB': -95, 'wl': [0, 1]}),
+    '06_armario_L_aberto': ((2.78, 1.5, 1.45), (2.7, 0.1, 1.0), 18, {'dL': 100, 'wl': [2]}),
+    '07_gavetas': ((1.26, 1.15, 1.42), (1.26, 0.55, 0.3), 18, {'drawers': True}),
     '08_aparador_aberto': ((1.6, 1.4, 1.4), (1.8, 2.8, 0.55), 18, {'sb': True}),
 }
 
@@ -1007,7 +1011,7 @@ def apply_state(S, st):
     for k in ('dA', 'dB', 'dL'):
         S[k].rotation_euler[2] = math.radians(st.get(k, 0))
     for i, lt in enumerate(S['wlights']):
-        lt.data.energy = 25 if i in st.get('wl', []) else 0
+        lt.data.energy = 50 if i in st.get('wl', []) else 0
     for i, d in enumerate(S['drawers'][1]):
         d.location.y = 0.56 + ([0.36, 0.0, 0.22, 0.0][i] if st.get('drawers') else 0)
     sbd = S['sb_doors']
