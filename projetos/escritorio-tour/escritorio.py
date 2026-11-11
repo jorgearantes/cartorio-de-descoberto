@@ -941,10 +941,11 @@ def choreograph(S, cam):
     key_loc(c2, sec(47.8), (2.12, 1.38, 0)); key_rotz(c2, sec(47.8), 25)
     key_loc(c2, sec(49.4), (1.775, 1.05, 0)); key_rotz(c2, sec(49.4), -8)
     tr = S['trays'][1]
-    key_loc(tr, sec(44.4), tuple(tr.location))
-    key_loc(tr, sec(45.4), (tr.location.x, tr.location.y + 0.26, tr.location.z))
-    key_loc(tr, sec(46.8), (tr.location.x, tr.location.y + 0.26, tr.location.z))
-    key_loc(tr, sec(47.8), (tr.location.x, tr.location.y, tr.location.z))
+    tx, ty, tz = tuple(tr.location)
+    key_loc(tr, sec(44.4), (tx, ty, tz))
+    key_loc(tr, sec(45.4), (tx, ty + 0.26, tz))
+    key_loc(tr, sec(46.8), (tx, ty + 0.26, tz))
+    key_loc(tr, sec(47.8), (tx, ty, tz))
     # --- aparador: par central abre
     d2, d3 = S['sb_doors'][2], S['sb_doors'][3]
     key_rotz(d2, sec(50.0), 0); key_rotz(d3, sec(50.0), 0)
